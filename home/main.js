@@ -48,22 +48,27 @@
 // input Select start
 const Quations1 = document.querySelectorAll("input");
 const SubmitBtn = document.getElementById("Submit-Btn");
-
+const DivelLength = document.querySelectorAll(".Quations-section-child")
+const DivTotalPonts = document.getElementById("TotalPonts")
 SubmitBtn.addEventListener("click", () => {
-  let CorrectCount = 0;
+  let TotalPoints = 0
+  let CheckCount = 0;
   for (i = 0; i < [...Quations1].length; i++) {
     let isChecked = Quations1[i].checked;
     if (isChecked) {
-        CorrectCount++;
+      CheckCount++;
     }
   }
-  if (CorrectCount >= Quations1.length / 5) {
+  if (CheckCount >= DivelLength.length) {
     Quations1.forEach((InputsRadios) => {
       InputsRadios.disabled = true;
       if (InputsRadios.checked) {
         switch (InputsRadios.value) {
           case "Correct":
             InputsRadios.className += " Correct";
+            // TotalPoints += 10
+            // const TolatPonitsP = document.createElement("p")
+            // TolatPonitsP.innerText = TotalPoints
             break;
 
           default:

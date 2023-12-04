@@ -188,6 +188,21 @@ input[type="radio"]:checked + label {
   color: rgb(70, 69, 69) !important;
   font-weight: 400 !important;
 }
+.Quations-img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media(max-width:991px){
+  .Quations-img img{
+  width: 450px;
+  }
+}
+@media(max-width:768px){
+  .Quations-img img{
+  width: 250px;
+  }
+}
 /* input radios css end */
 
 /* submit btn test start */
