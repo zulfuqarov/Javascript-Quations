@@ -46,47 +46,51 @@
 // }
 
 // input Select start
-const Quations1 = document.querySelectorAll("input");
+const Quations2 = document.querySelectorAll("input");
 const SubmitBtn = document.getElementById("Submit-Btn");
-const DivelLength = document.querySelectorAll(".Quations-section-child")
-const DivTotalPonts = document.getElementById("TotalPonts")
+const DivelLength = document.querySelectorAll(".Quations-section-child");
+const DivTotalPonts = document.getElementById("TotalPonts");
 SubmitBtn.addEventListener("click", () => {
-  let TotalPoints = 0
+  let TotalPoints = 0;
   let CheckCount = 0;
-  for (i = 0; i < [...Quations1].length; i++) {
-    let isChecked = Quations1[i].checked;
+  for (i = 0; i < [...Quations2].length; i++) {
+    let isChecked = Quations2[i].checked;
     if (isChecked) {
       CheckCount++;
     }
   }
+
   if (CheckCount >= DivelLength.length) {
-    Quations1.forEach((InputsRadios) => {
-      InputsRadios.disabled = true;
-      if (InputsRadios.checked) {
-        switch (InputsRadios.value) {
-          case "Correct":
-            InputsRadios.className += " Correct";
-            // TotalPoints += 10
-            // const TolatPonitsP = document.createElement("p")
-            // TolatPonitsP.innerText = TotalPoints
-            break;
+    DivelLength.forEach((divPoints) => {
+      const Quations1 = divPoints.querySelectorAll("input");
+      Quations1.forEach((InputsRadios) => {
+        InputsRadios.disabled = true;
+        if (InputsRadios.checked) {
+          switch (InputsRadios.value) {
+            case "Correct":
+              InputsRadios.className += " Correct";
+              TotalPoints += parseInt(divPoints.dataset.points);
+              break;
 
-          default:
-            const WrongCorrect = [...Quations1].filter((oneFind) => {
-              return oneFind.value === "Correct";
-            });
-            WrongCorrect.forEach((oneCorrect) => {
-              oneCorrect.className += " Correct";
-            });
+            default:
+              const WrongCorrect = [...Quations1].filter((oneFind) => {
+                return oneFind.value === "Correct";
+              });
+              WrongCorrect.forEach((oneCorrect) => {
+                oneCorrect.className += " Correct";
+              });
 
-            InputsRadios.className += " Wrong";
-            break;
+              InputsRadios.className += " Wrong";
+              break;
+          }
         }
-      }
+      });
     });
   } else {
     alert("Bos buraxilmis xatana var");
   }
+  const PointsP = document.createElement("p");
+  PointsP.textContent = TotalPoints;
+  DivTotalPonts.appendChild(PointsP);
 });
-
 // input Select end
