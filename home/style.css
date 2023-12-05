@@ -177,6 +177,19 @@ input[type="radio"]:checked + label {
   color: black;
   font-weight: 700;
 }
+.Quations-section-child-input {
+  padding-bottom: 40px;
+}
+.Quations-section-child-input h4 {
+  font-size: 22px;
+  color: #3498db;
+  font-weight: 700;
+}
+.Quations-section-child-input span {
+  font-size: 18px;
+  color: black;
+  font-weight: 700;
+}
 .radio-container1-p {
   line-height: 25px;
   font-weight: 700;
@@ -188,19 +201,59 @@ input[type="radio"]:checked + label {
   color: rgb(70, 69, 69) !important;
   font-weight: 400 !important;
 }
-.Quations-img{
+.Quations-img {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-@media(max-width:991px){
-  .Quations-img img{
-  width: 450px;
+.Quations-section-child-top {
+  display: flex;
+  justify-content: space-between;
+}
+.points-quations {
+  display: inline-block !important;
+  font-size: 17px !important;
+  color: rgb(145, 145, 145) !important;
+  padding-right: 10px;
+}
+.section-bottom {
+  display: flex;
+  flex-direction: row;
+}
+.TotalPonts {
+  display: flex;
+  flex-direction: row;
+  padding-right: 30px;
+  padding-bottom: 20px;
+}
+.TotalPonts h3 {
+  width: 150px;
+  font-size: 18px;
+  color: red;
+  font-weight: 700;
+  font-family: "Courier New", Courier, monospace;
+}
+.TotalPonts p {
+  font-size: 17px;
+  color: black;
+  font-weight: 700;
+}
+.input-text {
+  border: 1px solid #3498db;
+  padding: 10px 15px;
+  margin: 8px 0;
+  font-size: 17px;
+  color: #3498db;
+}
+
+@media (max-width: 991px) {
+  .Quations-img img {
+    width: 550px;
   }
 }
-@media(max-width:768px){
-  .Quations-img img{
-  width: 250px;
+@media (max-width: 768px) {
+  .Quations-img img {
+    width: 100%;
   }
 }
 /* input radios css end */
@@ -239,6 +292,14 @@ input[type="radio"]:checked + label {
 }
 .Correct + label {
   background-color: rgb(51, 218, 51) !important;
+  color: white !important;
+}
+.Correct-input {
+  background-color: rgb(51, 218, 51) !important;
+  color: white !important;
+}
+.Wrong-input {
+  background-color: rgb(247, 69, 69) !important;
   color: white !important;
 }
 
