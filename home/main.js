@@ -104,27 +104,41 @@ SubmitBtn.addEventListener("click", () => {
               inputTextP1.textContent = "true";
               inputTextP2.textContent = "false";
               InputTextDiv[0].appendChild(inputTextP1).className +=
-                " Correct-input";
+                " Correct-inputP";
               InputTextDiv[1].appendChild(inputTextP2).className +=
-                " Correct-input";
+                " Correct-inputP";
+              WrongQuations += 1;
               break;
             case "true":
               InputsRadios.className += " Correct-input";
+              TotalPoints += 3;
               break;
             case "false":
-              InputsRadios.className += " Crrect-input";
+              InputsRadios.className += " Correct-input";
+              TotalPoints += 3;
               break;
 
             default:
               InputsRadios.className += " Wrong-input";
+              InputTextDiv[0].innerHTML = "";
+              InputTextDiv[1].innerHTML = "";
 
+              const inputTextP3 = document.createElement("p");
+              const inputTextP4 = document.createElement("p");
+              inputTextP3.textContent = "true";
+              inputTextP4.textContent = "false";
+              InputTextDiv[0].appendChild(inputTextP3).className +=
+                " Correct-inputP";
+              InputTextDiv[1].appendChild(inputTextP4).className +=
+                " Correct-inputP";
+              WrongQuations += 1;
               break;
           }
         }
       });
     });
   } else {
-    alert("Bos buraxilmis xatana var");
+    alert("Boş buraxılmış xana var");
   }
   if (TotalPoints !== 0) {
     const PointsP = document.createElement("p");

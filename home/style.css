@@ -194,6 +194,7 @@ input[type="radio"]:checked + label {
   line-height: 25px;
   font-weight: 700;
   font-size: 18px;
+  padding-top: 15px;
 }
 .input-radio-span {
   display: inline-block;
@@ -215,6 +216,7 @@ input[type="radio"]:checked + label {
   font-size: 17px !important;
   color: rgb(145, 145, 145) !important;
   padding-right: 10px;
+  padding-top: 15px;
 }
 .section-bottom {
   display: flex;
@@ -245,7 +247,11 @@ input[type="radio"]:checked + label {
   font-size: 17px;
   color: #3498db;
 }
-
+.radio-container-text-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 @media (max-width: 991px) {
   .Quations-img img {
     width: 550px;
@@ -297,6 +303,11 @@ input[type="radio"]:checked + label {
 .Correct-input {
   background-color: rgb(51, 218, 51) !important;
   color: white !important;
+}
+.Correct-inputP {
+  color: rgb(51, 218, 51) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
 }
 .Wrong-input {
   background-color: rgb(247, 69, 69) !important;
