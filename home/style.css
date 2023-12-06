@@ -87,6 +87,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .header-h1 {
   text-align: center;
   font-size: 54px;
@@ -109,6 +110,7 @@ body {
   font-weight: 700;
   font-family: "Ephesis", cursive;
   font-family: "Varela Round", sans-serif;
+  padding-top: 20px;
 }
 .start-test a:hover {
   color: yellow;
