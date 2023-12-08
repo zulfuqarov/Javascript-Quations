@@ -1,51 +1,93 @@
-// // Fare sayfanın dışına çıktığında
-// document.addEventListener("mouseout", function (e) {
-//   // Eğer önceki bir bekleme süresi varsa, iptal et
+// Quations Data start
+import data22 from "../test/data.js";
+// Quations Data end
 
-//   // Fare olayı sayfanın dışına çıkıyorsa
-//   if (
-//     e.clientY < 0 ||
-//     e.clientX < 0 ||
-//     e.clientX > window.innerWidth ||
-//     e.clientY > window.innerHeight
-//   ) {
-//     const a = confirm("sehife yeniden yuklenecek ?");
-//     if (a) {
-//       location.reload();
-//     } else {
-//       setTimeout(() => {
-//         location.reload();
-//       }, 3000);
-//     }
-//   }
-// });
+const QuationsSection = document.querySelector(".Quations-section");
 
-// ------------------------------
+// creat input quations start
+const QuationsFunc = (arr) => {
+  let html = "";
+  let a = 0;
+  let say = 0;
+  arr.map((oneMap, index) => {
+    a += 1;
+    say += 1;
+    html +=
+      index <= 24
+        ? `
+    <div
+        data-points=${oneMap.xal}
+        id="Quations-section-child"
+        class="Quations-section-child"
+      >
+        <div class="Quations-section-child-top">
+          <h4> ${say} <span>.</span></h4>
+          <span class="points-quations">${oneMap.xal} Xal</span>
+        </div>
+        ${
+          index > 13
+            ? `<div class="Quations-img">
+        <img src="${oneMap.imgs}" alt="" />
+        <p class="radio-container1-p">Funksiya Cavabı nədir ?</p>
+      </div>`
+            : `<div class="radio-container1">
+            <p class="radio-container1-p">
+              ${oneMap.sual}
+            </p>
+          </div>`
+        }
+        <div class="radio-container">
+          ${oneMap.cavab
+            .map((oneMap1) => {
+              return `
+              <input type="radio" id="option${(a += 1)}" name=${
+                oneMap.Option
+              } value=${oneMap1.Correct} />
+          <label for="option${a}"
+            >${oneMap1.variant})
+            <span class="input-radio-span">${oneMap1.cabalar}</span>
+          </label>`;
+            })
+            .join("")}
+        </div>
+      </div>
+    `
+        : ` <div id="Quations-section-child" class="Quations-section-child-input">
+    <div class="Quations-section-child-top">
+      <h4>
+      ${say}  <span>.</span>
+      </h4>
+    </div>
+    <div class="Quations-img">
+      <img src="QuationsImg/Quations11.PNG" alt="" />
+      <p class="radio-container1-p">
+        console.log da geriyə nə qaytarılacaq
+      </p>
+    </div>
+    <div class="radio-container">
+      ${oneMap.cavab
+        .map((oneMap2) => {
+          return `<span class="points-quations">${oneMap2.xal} Xal</span>
+        <input
+          class="input-text"
+          type="text"
+          id="option${(a += 1)}"
+          placeholder="${oneMap2.Placeholder}"
+        />
+        <div class="radio-container-text-input"></div>`;
+        })
+        .join("")}
+    </div>
+  </div> `;
+  });
+  return html;
+};
+// creat input quations end
 
-// var onay = false;  // Varsayılan değer false
+const HtmlQuationsSection = QuationsFunc(data22);
+QuationsSection.innerHTML += HtmlQuationsSection;
 
-// // Confirm penceresini göster
-// var confirmTimeout = setTimeout(function() {
-//   // 2 saniye içinde bir cevap gelmezse bu kod çalışacak
-//   if (onay === false) {
-//     console.log("Kullanıcı 2 saniye içinde cevap vermedi veya pencereyi kapattı.");
-//   }
-// }, 2000);  // 2 saniye (2000 milisaniye) süreyle bekleyecek
-
-// // Confirm penceresini göster ve kullanıcının cevabını bekleyecektir
-// onay = confirm("Emin misiniz?");
-
-// // Kullanıcı cevap verirse, timeout'u temizle
-// clearTimeout(confirmTimeout);
-
-// // Kullanıcının cevapına göre işlemleri devam ettir
-// if (onay === true) {
-//   console.log("Kullanıcı 'Evet' dedi!");
-// } else if (onay === false) {
-//   console.log("Kullanıcı 'Hayır' dedi veya pencereyi kapattı.");
-// }
-
-// input Select start
+// document element select start
 const Quations2 = document.querySelectorAll("input[type='radio']");
 const SubmitBtn = document.getElementById("Submit-Btn");
 const DivelLength = document.querySelectorAll("#Quations-section-child");
@@ -53,11 +95,15 @@ const DivelLength2 = document.querySelectorAll(".Quations-section-child");
 const DivTotalPonts = document.getElementById("TotalPonts");
 const DivTotalPonts2 = document.getElementById("TotalPonts2");
 const InputTextDiv = document.querySelectorAll(".radio-container-text-input");
+// document element select end
+
+// Submit Btn start
 SubmitBtn.addEventListener("click", () => {
+  SubmitBtn.disabled = true;
   let TotalPoints = 0;
   let CheckCount = 0;
   let WrongQuations = 0;
-  for (i = 0; i < [...Quations2].length; i++) {
+  for (let i = 0; i < [...Quations2].length; i++) {
     let isChecked = Quations2[i].checked;
     if (isChecked) {
       CheckCount++;
@@ -139,6 +185,7 @@ SubmitBtn.addEventListener("click", () => {
     });
   } else {
     alert("Boş buraxılmış xana var");
+    SubmitBtn.disabled = false;
   }
   if (TotalPoints !== 0) {
     const PointsP = document.createElement("p");
@@ -149,4 +196,4 @@ SubmitBtn.addEventListener("click", () => {
     DivTotalPonts2.appendChild(WrongQuationsP);
   }
 });
-// input Select end
+// Submit Btn start
